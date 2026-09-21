@@ -7,12 +7,12 @@ import { getFirestore, doc, setDoc, getDoc, serverTimestamp }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "PASTE_HERE",
-  authDomain: "PASTE_HERE",
-  projectId: "PASTE_HERE",
-  storageBucket: "PASTE_HERE",
-  messagingSenderId: "PASTE_HERE",
-  appId: "PASTE_HERE"
+  apiKey: "AIzaSyAmkQb8hT4RDbO19kbQIRIhGjY8pIOnx28",
+  authDomain: "rover-buddies.firebaseapp.com",
+  projectId: "rover-buddies",
+  storageBucket: "rover-buddies.firebasestorage.app",
+  messagingSenderId: "702793437835",
+  appId: "1:702793437835:web:8a7a70c0a9af2985c63a8e"
 };
 
 const app = initializeApp(firebaseConfig);
