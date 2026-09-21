@@ -37,48 +37,12 @@
       <p class="message" id="message" role="alert"></p>
     </form>
 
-    <p class="footer">New here? <a href="#">Create an account</a></p>
+    <p class="footer">New here? <a href="signup.html">Create an account</a></p>
   </main>
 
-  <script>
-    const form = document.getElementById("loginForm");
-    const emailEl = document.getElementById("email");
-    const pwEl = document.getElementById("password");
-    const msg = document.getElementById("message");
-    const toggle = document.getElementById("togglePw");
-
-    // Show / hide password
-    toggle.addEventListener("click", () => {
-      const hidden = pwEl.type === "password";
-      pwEl.type = hidden ? "text" : "password";
-      toggle.textContent = hidden ? "Hide" : "Show";
-    });
-
-    function showMessage(text, type) {
-      msg.textContent = text;
-      msg.className = "message " + type;
-    }
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const email = emailEl.value.trim();
-      const password = pwEl.value;
-
-      if (!email || !password) {
-        return showMessage("Please fill in both fields.", "error");
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        return showMessage("Please enter a valid email address.", "error");
-      }
-      if (password.length < 6) {
-        return showMessage("Password must be at least 6 characters.", "error");
-      }
-
-      // TODO: replace this with a real request to your backend, e.g.
-      // fetch("/api/login", { method: "POST", headers: {"Content-Type": "application/json"},
-      //   body: JSON.stringify({ email, password }) })
-      showMessage("Welcome aboard, astronaut! 🌟", "success");
-    });
-  </script>
+  <script
+    type="module" src="auth.js">
+</script>
+  
 </body>
 </html>
