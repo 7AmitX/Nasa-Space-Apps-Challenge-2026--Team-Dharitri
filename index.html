@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galaxy Kids – Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card">
+    <div class="logo">🚀</div>
+    <h1>Galaxy Kids</h1>
+    <p class="subtitle">Log in to start your mission!</p>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="astronaut@galaxy.com" autocomplete="email" required />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="input-wrap">
+          <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required />
+          <button type="button" class="toggle" id="togglePw">Show</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <label><input type="checkbox" id="remember" /> Remember me</label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn">Blast Off! ✨</button>
+      <p class="message" id="message" role="alert"></p>
+    </form>
+
+    <p class="footer">New here? <a href="#">Create an account</a></p>
+  </main>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const emailEl = document.getElementById("email");
+    const pwEl = document.getElementById("password");
+    const msg = document.getElementById("message");
+    const toggle = document.getElementById("togglePw");
+
+    // Show / hide password
+    toggle.addEventListener("click", () => {
+      const hidden = pwEl.type === "password";
+      pwEl.type = hidden ? "text" : "password";
+      toggle.textContent = hidden ? "Hide" : "Show";
+    });
+
+    function showMessage(text, type) {
+      msg.textContent = text;
+      msg.className = "message " + type;
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = emailEl.value.trim();
+      const password = pwEl.value;
+
+      if (!email || !password) {
+        return showMessage("Please fill in both fields.", "error");
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return showMessage("Please enter a valid email address.", "error");
+      }
+      if (password.length < 6) {
+        return showMessage("Password must be at least 6 characters.", "error");
+      }
+
+      // TODO: replace this with a real request to your backend, e.g.
+      // fetch("/api/login", { method: "POST", headers: {"Content-Type": "application/json"},
+      //   body: JSON.stringify({ email, password }) })
+      showMessage("Welcome aboard, astronaut! 🌟", "success");
+    });
+  </script>
+</body>
+</html>
